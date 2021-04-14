@@ -1,15 +1,16 @@
+import express from 'express';
 import {
+  currentUser,
   signin,
   signout,
   signup,
-  currentUser,
-} from '../../../controllers/users';
+} from '../../../controllers/user-controller';
+import { signupValidator } from '../../../validators/user-validator';
 
-const router = require('express').Router();
-
+const router = express.Router();
 router.get('/currentuser', currentUser);
 router.post('/signin', signin);
 router.post('/signout', signout);
-router.post('/signup', signup);
+router.post('/signup', signupValidator, signup);
 
 export { router as userRouter };
