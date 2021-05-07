@@ -8,7 +8,6 @@ router.use('/api', apiRouter);
 router.all('*', async () => {
   throw new NotFoundError();
 });
-
 router.use(errorHandler);
 
 export { router as routes };
